@@ -28,6 +28,7 @@ benbenjiucai-skill/
 │       ├── market-context.md        # 市场环境判断
 │       ├── industry-chain.md        # 产业链分析
 │       └── quarterly-report.md      # 季报解读
+│   └── benben-stock-guide/          # 选股导航交互系统
 ├── scripts/
 │   ├── pre_extract.py               # Phase 1.5 预提炼工具
 │   └── transcript_filter.py         # 转录文件质量筛选工具
@@ -205,6 +206,16 @@ benbenjiucai-skill/
 - 6个按需加载模块
 - 5组内在张力（保留未调和）
 - 诚实边界（6个已知局限）
+
+---
+
+## MCP 工具依赖
+
+笨笨的韭菜选股导航系统（benben-stock-guide）依赖以下 MCP 工具：
+
+| 工具 | 用途 |
+|------|------|
+| `mcp__MiniMax__web_search` | 实时查询个股公告风险、黑天鹅事件、市场成交量、板块走势 |
 
 ---
 
