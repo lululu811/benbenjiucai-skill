@@ -13,10 +13,12 @@ description: |
 
 环境变量配置：
 ```bash
-TUSHARE_PROXY_KEY=TUSHARE_PROXY_KEY=your_key_here
+TUSHARE_PROXY_KEY=your_key_here
+TUSHARE_PROXY_URL=http://tsy.xiaodefa.cn
 ```
 
-API 地址：`http://tsy.xiaodefa.cn`
+> 实际 Key 通过环境变量读取，不在 Skill 文件中硬编码。
+> 部署时复制 `.env.example` 为 `.env` 并填入实际值。
 支持所有 Tushare Pro 接口（15000积分权限）。
 
 ## 量化增强原则

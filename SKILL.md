@@ -75,8 +75,9 @@ description: |
 - 用户说"不用""不开""纯定性""不要" → **保持纯定性模式**
 - 不回答 → 默认不开启，保持纯定性
 
-**数据源**：Tushare 中转站（http://tsy.xiaodefa.cn）
-**配置方式**：环境变量 `TUSHARE_PROXY_KEY`
+**数据源**：Tushare 中转站
+**配置方式**：环境变量 `TUSHARE_PROXY_KEY` 和 `TUSHARE_PROXY_URL`
+**配置模板**：复制 `.env.example` 为 `.env` 并填入实际值
 
 **使用场景**：
 - 用户说"帮我用数据验证一下""开启量化模式""查一下数据" → 加载量化增强模块
