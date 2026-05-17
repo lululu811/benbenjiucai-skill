@@ -2,7 +2,10 @@
 references/sources/
 
 # OMC 会话状态（临时文件，不提交）
-.omc/
+.omc/*
+# 但保留子 Skill 文件（需要版本控制）
+!.omc/skills/
+!.omc/skills/**/*
 
 # Python
 __pycache__/

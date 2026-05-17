@@ -19,19 +19,29 @@ benbenjiucai-skill/
 ├── CHANGELOG.md                      # 版本更新日志
 ├── modules/                          # 模块化系统
 │   ├── core/                         # 核心系统（始终加载）
-│   │   ├── thinking-models.md       # 20 个心智模型
-│   │   └── heuristics.md            # 40 条决策启发式
-│   └── on-demand/                    # 按需模块（渐进加载）
+│   │   ├── identity.md              # 身份卡 + 时间线
+│   │   ├── thinking-models.md       # 24 个心智模型
+│   │   └── heuristics.md            # 50 条决策启发式
+│   └── on-demand/                    # 按需模块（源文件）
 │       ├── stock-analysis.md        # 个股分析流程
 │       ├── portfolio.md             # 仓位管理
 │       ├── psychology.md            # 心态与情绪
 │       ├── market-context.md        # 市场环境判断
 │       ├── industry-chain.md        # 产业链分析
-│       └── quarterly-report.md      # 季报解读
-│   └── benben-stock-guide/          # 选股导航交互系统
+│       ├── quarterly-report.md      # 季报解读
+│       └── benben-stock-guide/     # 选股导航交互系统（源文件）
+├── .omc/
+│   └── skills/                      # OMC 子 Skill（条件自动加载）
+│       ├── benbenjiucai-stock/      # 个股分析
+│       ├── benbenjiucai-portfolio/  # 仓位管理
+│       ├── benbenjiucai-psychology/ # 心态情绪
+│       ├── benbenjiucai-market/     # 市场环境
+│       ├── benbenjiucai-industry/   # 产业链分析
+│       ├── benbenjiucai-quarterly/  # 季报解读
+│       └── benben-stock-guide/      # 选股导航
 ├── scripts/
 │   ├── pre_extract.py               # Phase 1.5 预提炼工具
-│   └── transcript_filter.py         # 转录文件质量筛选工具
+│   └── screenshot.mjs               # Playwright 高清截图脚本（卡片导出）
 ├── references/
 │   ├── research/                     # 6个维度的Agent调研结果
 │   │   ├── 01-writings.md
@@ -44,7 +54,14 @@ benbenjiucai-skill/
 │   │   ├── transcripts/             # 203 个视频转录文件
 │   │   └── articles/                # 充电问答等
 │   ├── extraction-framework.md      # 思维框架提炼方法论
-│   └── skill-template.md            # SKILL.md 构建模板
+│   ├── skill-template.md            # SKILL.md 构建模板
+│   ├── framework-extraction.md      # 框架提炼阶段记录
+│   ├── phase4-verification.md       # Phase 4 质量验证记录
+│   ├── phase5-optimizer-review.md   # Phase 5 优化器评审
+│   ├── phase5-creator-review.md     # Phase 5 创建者评审
+│   ├── qa-response-patterns.md      # QA 回答模式分析
+│   ├── video-transcript-deep-dive.md      # 视频转录深度挖掘报告
+│   └── video-transcript-data-quality.md   # 转录数据质量问题记录
 └── templates/
 ```
 
@@ -182,7 +199,7 @@ benbenjiucai-skill/
 
 ## 项目完成 ✅
 
-**笨笨的韭菜 · Skill蒸馏 全部完成（v2.6）！**
+**笨笨的韭菜 · Skill蒸馏 全部完成（v2.7）！**
 
 | 阶段 | 状态 | 产出 |
 |------|------|------|
@@ -194,16 +211,20 @@ benbenjiucai-skill/
 | Phase 4 | ✅ | 3/3已知测试通过，边缘测试通过，风格测试通过 |
 | Phase 5 | ✅ | 双Agent评审通过，4项改进已完成 |
 | Phase 6 | ✅ | 视频转录深度挖掘，4个专项Agent，15+视频精读 |
-| Phase 7 | ✅ | 模块化架构重构，6个按需模块，风险提示声明 |
+| Phase 7 | ✅ | 模块化架构重构，9个按需模块，风险提示声明 |
 | Phase 8 | ✅ | 批量挖掘补充，4个新模型+8条新启发式，v2.4 |
 | Phase 9 | ✅ | B站动态批量挖掘，5个新模型+10条新启发式，v2.5 |
 | Phase 10 | ✅ | 合集字幕深度挖掘，4个新模型+10条新启发式，v2.6 |
+| Phase 11 | ✅ | 工程化完善：3个新模块+4个模板+2个自动化脚本+数据源接入，v2.7 |
 
-**最终交付物**：`SKILL.md`（笨笨的韭菜 · 思维操作系统 v2.6）
+**最终交付物**：`SKILL.md`（笨笨的韭菜 · 思维操作系统 v2.7）
 - 24个核心心智模型（7个QA提炼+1个视频独有+4个批量挖掘补充+5个直播深化+7个动态/字幕新增）
 - 50条决策启发式（10个QA+12个视频深化/独有+8个批量挖掘补充+10个动态新增+10个字幕新增）
 - 完整表达DNA（QA+视频+动态+字幕四源融合）
-- 6个按需加载模块
+- 9个按需加载模块（+止盈策略+宏观分析+量化增强）
+- 10个OMC子Skill（+benbenjiucai-take-profit+benbenjiucai-macro+benbenjiucai-quant）
+- 4个开发模板（Agent调研/模块开发/验证测试/OMC转换）
+- 2个自动化脚本（sync_omc.py / validate_skill.py）
 - 5组内在张力（保留未调和）
 - 诚实边界（6个已知局限）
 
@@ -215,7 +236,7 @@ benbenjiucai-skill/
 
 | 工具 | 用途 |
 |------|------|
-| `mcp__MiniMax__web_search` | 实时查询个股公告风险、黑天鹅事件、市场成交量、板块走势 |
+| `mcp__MiniMax__web_search` | 实时查询个股公告风险、黑天鹅事件、市场成交量、板块走势、宏观数据（CPI/PMI/政策） |
 
 ---
 
@@ -246,6 +267,9 @@ benbenjiucai-skill/
 
 | 版本 | 时间 | 核心变化 |
 |------|------|----------|
+| v2.7 | 2026-05-17 | 3个新模块（止盈/宏观/量化增强）+4个模板+2个脚本+Tushare数据源接入 |
+| v2.6 | 2026-05-14 | 合集字幕深度挖掘：Model 21-24、H41-H50 |
+| v2.5 | 2026-05-14 | B站动态批量挖掘：Model 16-20、H31-H40 |
 | v2.4 | 2026-05-13 | 批量挖掘：Model 12-15、H23-H30、中美竞争极限逻辑、黑天鹅分级 |
 | v2.3 | 2026-05-13 | 模块化架构、风险提示声明、6个按需模块 |
 | v2.2 | 2026-05-12 | 视频转录深度挖掘、笨韭双击/单机框架 |
@@ -256,5 +280,15 @@ benbenjiucai-skill/
 
 - [ ] 修复转录错误文件（重新转录BV1bpQeY2EvH等）
 - [ ] 补充高位止盈策略专题（视频八转录错误，内容缺失）
-- [ ] 添加更多视频深化内容（超配策略视频203转录为空）
-- [ ] 评估是否需要新增"宏观分析"按需模块
+- [x] 将 `templates/` 目录中的占位模板补充完整 ✅
+- [x] 评估是否需要新增"宏观分析"按需模块 ✅（已完成）
+- [x] 新建"止盈策略"按需模块 ✅（H41高位止盈三维信号独立成模块）
+- [x] 新建"量化增强"按需模块 ✅（Tushare数据验证+web_search宏观查询）
+- [x] 为 SKILL 添加自动化验证测试 ✅（scripts/validate_skill.py）
+- [x] 构建 OMC 自动同步脚本 ✅（scripts/sync_omc.py）
+
+---
+
+## 联系作者
+
+<img src="./assets/wechat-qr.png" alt="微信二维码" width="200" />

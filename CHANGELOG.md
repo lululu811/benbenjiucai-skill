@@ -5,6 +5,146 @@ All notable changes to the 笨笨的韭菜 Skill project will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [2.7.0] - 2026-05-17
+
+### Added
+- 新建3个按需模块：
+  - `take-profit` — 止盈策略（H41高位止盈三维信号独立成模块，宏观/板块/个股三层撤退信号）
+  - `macro-analysis` — 宏观分析（Model14中美竞争极限逻辑、Model23关税战情景推演、H23CPI/H29跨市场对冲/H39关税应对）
+  - `quant-enhanced` — 量化增强（Tushare数据验证定性判断，5个量化维度：纯度/壁垒/估值/撤退/宏观）
+- 新增3个OMC子Skill：benbenjiucai-take-profit、benbenjiucai-macro、benbenjiucai-quant
+- 新建4个开发模板：`agent-research-task`、`on-demand-module`、`validation-test-case`、`omc-subskill`
+- 构建自动化脚本：
+  - `scripts/sync_omc.py` — OMC子Skill自动同步（10个映射）
+  - `scripts/validate_skill.py` — 质量验证（禁用词/人称/引用格式/OMC同步状态）
+- Tushare中转站数据源接入（http://tsy.xiaodefa.cn，15000积分权限）
+- 量化增强模式用户引导（首次激活时询问是否开启，可随时切换）
+
+### Fixed
+- `thinking-models.md` 删除Model 20重复内容
+- `benben-stock-guide/SKILL.md` 重构去重（删除3处重复内容，342→269行）
+- `industry-chain.md` 内容充实（39→111行，新增壁垒维度/轮动规律/行业案例）
+- `.omc/skills/` 全部重新同步（修复最高33%的内容缩水问题）
+- `SKILL.md` / `modules/README.md` 补充 benben-stock-guide / 止盈策略 / 宏观分析 / 量化增强 索引
+
+### Changed
+- 宏观验证数据源从 `cn_m` 改为 `mcp__MiniMax__web_search`（Tushare宏观数据延迟/为空）
+- 子Skill总数从7个扩展至10个
+- 模块总数从6个扩展至9个（+止盈策略+宏观分析+量化增强）
+
+## [2.6.1] - 2026-05-15
+
+### Added
+- OMC 子 Skill 架构（方案二实现）
+- 6个按需子 Skill 拆分为独立 Skill：
+  - `benbenjiucai-stock` — 个股分析（触发词：个股名/代码/"怎么看"/"能买吗"）
+  - `benbenjiucai-portfolio` — 仓位管理（触发词："仓位"/"减仓"/"加仓"/"单调"）
+  - `benbenjiucai-psychology` — 心态情绪（触发词："被套"/"慌了"/"怕输"）
+  - `benbenjiucai-market` — 市场环境（触发词："大盘"/"情绪"/"成交量"）
+  - `benbenjiucai-industry` — 产业链分析（触发词："产业链"/"谁最受益"）
+  - `benbenjiucai-quarterly` — 季报解读（触发词："季报"/"毛利率"/"扣非"）
+  - `benben-stock-guide` — 选股导航（已移至 `.omc/skills/`）
+- 主 SKILL.md 新增"可用子模块"索引表
+- `.omc/skills/` 目录结构建立
+- `.gitignore` 更新：保留 `.omc/skills/` 跟踪
+- modules/README.md 重写：说明源文件与加载文件的区别
+- 文档统一：版本号、数据规模、目录结构全部更新
+
+### Changed
+- `modules/on-demand/` 定位改为"源文件"而非"加载文件"
+- `benben-stock-guide` 从 `modules/` 同步至 `.omc/skills/`
+
+## [2.6.0] - 2026-05-14
+
+### Added
+- 合集字幕深度挖掘（Phase 10完成）
+- 新增4个心智模型（Model 21-24）：
+  - Model 21: AI终极方向（生命科学+星际文明）
+  - Model 22: 判断力-品位-责任三要素
+  - Model 23: 关税战情景推演
+  - Model 24: 硅基消费
+- 新增10条决策启发式（H41-H50）：
+  - H41: 高位止盈三维信号
+  - H42: 一带一路选股6条标准
+  - H43: 自主可控反向验证法
+  - H44: 压力越大越冷静
+  - H45: 现象级事件四要素
+  - H46: 政策新闻四要素
+  - H47: 换手率警戒线
+  - H48: 储能投资海外优先
+  - H49: 恒生科技ETF筛选标准
+  - H50: 消费板块系统性回避
+- 新增选股导航交互系统：`modules/benben-stock-guide/SKILL.md`
+- SKILL.md v2.6 更新完成
+
+### Changed
+- 心智模型从 20 个扩展至 24 个
+- 决策启发式从 40 条扩展至 50 条
+
+### Data
+- 3个合集字幕并行分析（选股逻辑教学+高景气机会事件+优秀直播录像）
+
+## [2.5.0] - 2026-05-14
+
+### Added
+- B站动态批量挖掘（Phase 9完成）
+- 新增5个心智模型（Model 16-20）：
+  - Model 16: 剑宗-气宗双战法
+  - Model 17: 水位/成交量理论
+  - Model 18: 投票定律
+  - Model 19: A股不可能三角
+  - Model 20: 慢牛优于快牛
+- 新增10条决策启发式（H31-H40）：
+  - H31: 做T五条件法则
+  - H32: 港股解禁杀伤力规则
+  - H33: 评论医情绪反向指标
+  - H34: 台积电资本开资=海外AI见顶信号
+  - H35: 70%个股破五日线=撤退信号
+  - H36: 情绪高点右侧止盈
+  - H37: 核心主线特殊对待
+  - H38: 资金规模与持股数量
+  - H39: 关税应对策略
+  - H40: 存储涨价行情规律
+- 持仓数据补充：账户规模900-1015万、满仓99.97%
+- SKILL.md v2.5 更新完成
+
+### Changed
+- 心智模型从 15 个扩展至 20 个
+- 决策启发式从 30 条扩展至 40 条
+
+### Data
+- 4个并行Agent分析1188条B站动态
+
+## [2.4.0] - 2026-05-13
+
+### Added
+- 批量挖掘视频转录补充（Phase 8完成）
+- 新增4个心智模型（Model 12-15）：
+  - Model 12: 情绪蔓延判断/板块退潮动力学
+  - Model 13: 港股间歇性下跌规律
+  - Model 14: 中美竞争极限逻辑
+  - Model 15: 黑天鹅分级应对
+- 新增8条决策启发式（H23-H30）：
+  - H23: CPI回暖是消费前置条件
+  - H24: 超配策略
+  - H25: 精简回本战略
+  - H26: 阶段性收益固化
+  - H27: 小资金翻倍市值门槛
+  - H28: ETF恐慌定投
+  - H29: 跨市场对冲
+  - H30: 黑天鹅分级
+- 模块文件更新：portfolio.md、psychology.md、market-context.md、stock-analysis.md
+
+### Changed
+- 心智模型从 11 个扩展至 15 个
+- 决策启发式从 22 条扩展至 30 条
+- SKILL.md 从 v2.3 升级至 v2.4
+
+### Data
+- 8个并行Agent批量读取视频转录
+
 ## [2.3.0] - 2026-05-13
 
 ### Added
